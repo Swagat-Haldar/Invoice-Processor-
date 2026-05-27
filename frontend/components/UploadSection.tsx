@@ -25,18 +25,18 @@ export default function UploadSection({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg border border-gray-200 bg-white p-4">
+    <form onSubmit={handleSubmit} className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold text-gray-900">Upload invoice</h2>
-          <p className="mt-1 text-sm text-gray-600">
+          <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100">Upload invoice</h2>
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Supports PDF, DOCX, JPG, PNG, TXT. Gemini processes pages without OCR.
           </p>
         </div>
         {isUploading ? (
-          <div className="text-sm text-gray-600">Processing…</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Processing…</div>
         ) : (
-          <div className="text-sm text-gray-600">Ready</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Ready</div>
         )}
       </div>
 
@@ -48,17 +48,17 @@ export default function UploadSection({
             const f = e.target.files?.[0] ?? null;
             setFile(f);
           }}
-          className="block w-full text-sm text-gray-700 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-3 file:py-2 file:text-indigo-700 hover:file:bg-indigo-100"
+          className="block w-full text-sm text-gray-700 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-3 file:py-2 file:text-indigo-700 hover:file:bg-indigo-100 dark:text-gray-300 dark:file:bg-indigo-900/30 dark:file:text-indigo-300 dark:hover:file:bg-indigo-900/50"
         />
       </div>
 
       {file ? (
-        <div className="mt-2 text-sm text-gray-700">
-          Selected: <span className="font-medium">{file.name}</span>
+        <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          Selected: <span className="font-medium dark:text-gray-200">{file.name}</span>
         </div>
       ) : null}
 
-      {errorMessage ? <div className="mt-3 text-sm text-red-600">{errorMessage}</div> : null}
+      {errorMessage ? <div className="mt-3 text-sm text-red-600 dark:text-red-400">{errorMessage}</div> : null}
 
       <button
         type="submit"

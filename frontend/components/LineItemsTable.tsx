@@ -334,19 +334,19 @@ export default function LineItemsTable({ lineItems }: LineItemsTableProps) {
   if (!rows.length) return null;
 
   return (
-    <section className="rounded-lg border border-gray-200 bg-white">
-      <div className="border-b border-gray-200 px-4 py-2 text-sm font-semibold text-gray-900">
+    <section className="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+      <div className="border-b border-gray-200 px-4 py-2 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
         Line Items
       </div>
       <div className="overflow-auto">
         <table className="min-w-full table-fixed border-collapse">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-50 dark:bg-gray-700">
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
                 {hg.headers.map((header) => (
                   <th
                     key={header.id}
-                    className="border-b border-gray-200 px-4 py-2 text-left text-xs font-medium text-gray-600"
+                    className="border-b border-gray-200 px-4 py-2 text-left text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300"
                   >
                     {header.isPlaceholder
                       ? null
@@ -358,9 +358,9 @@ export default function LineItemsTable({ lineItems }: LineItemsTableProps) {
           </thead>
           <tbody>
             {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-gray-50">
+              <tr key={row.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="border-b border-gray-200 px-4 py-2 text-sm text-gray-900">
+                  <td key={cell.id} className="border-b border-gray-200 px-4 py-2 text-sm text-gray-900 dark:border-gray-700 dark:text-gray-100">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
@@ -371,33 +371,33 @@ export default function LineItemsTable({ lineItems }: LineItemsTableProps) {
       </div>
 
       {(totals.hasQty || totals.hasProduct || totals.hasTax || totals.grandTotal !== null) ? (
-        <div className="mt-4 rounded-lg border border-gray-200 bg-white">
-          <div className="border-b border-gray-200 px-4 py-2 text-sm font-semibold text-gray-900">
+        <div className="mt-4 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+          <div className="border-b border-gray-200 px-4 py-2 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             Invoice Totals
           </div>
           <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-4 py-3 text-sm">
             {totals.hasQty ? (
               <>
                 <div className="text-gray-600">Quantity</div>
-                <div className="font-medium text-gray-900">{formatNumber(totals.qtySum!, 0)}</div>
+                <div className="font-medium text-gray-900 dark:text-gray-100">{formatNumber(totals.qtySum!, 0)}</div>
               </>
             ) : null}
             {totals.hasProduct ? (
               <>
                 <div className="text-gray-600">Total Product Amount</div>
-                <div className="font-medium text-gray-900">{formatNumber(totals.productSum!, 3)}</div>
+                <div className="font-medium text-gray-900 dark:text-gray-100">{formatNumber(totals.productSum!, 3)}</div>
               </>
             ) : null}
             {totals.hasTax ? (
               <>
                 <div className="text-gray-600">Tax</div>
-                <div className="font-medium text-gray-900">{formatNumber(totals.taxSum!, 3)}</div>
+                <div className="font-medium text-gray-900 dark:text-gray-100">{formatNumber(totals.taxSum!, 3)}</div>
               </>
             ) : null}
             {totals.grandTotal !== null ? (
               <>
                 <div className="text-gray-600">Grand Total</div>
-                <div className="font-medium text-gray-900">{formatNumber(totals.grandTotal!, 3)}</div>
+                <div className="font-medium text-gray-900 dark:text-gray-100">{formatNumber(totals.grandTotal!, 3)}</div>
               </>
             ) : null}
           </div>

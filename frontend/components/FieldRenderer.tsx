@@ -35,14 +35,14 @@ export function FieldRenderer({ value, depth = 0 }: FieldRendererProps) {
   if (!isRenderable(value)) return null;
 
   if (isRenderablePrimitive(value)) {
-    return <div className="text-sm text-gray-900">{renderScalar(value)}</div>;
+    return <div className="text-sm text-gray-900 dark:text-gray-100">{renderScalar(value)}</div>;
   }
 
   if (Array.isArray(value)) {
     // Keep arrays readable while avoiding hardcoded invoice assumptions.
     if (value.length === 0) return null;
     return (
-      <ul className="list-disc pl-5 text-sm text-gray-900">
+      <ul className="list-disc pl-5 text-sm text-gray-900 dark:text-gray-100">
         {value
           .filter((v) => isRenderable(v))
           .slice(0, 50)
@@ -67,7 +67,7 @@ export function FieldRenderer({ value, depth = 0 }: FieldRendererProps) {
         <div className="grid grid-cols-1 gap-y-2">
           {entries.map(([k, v]) => (
             <div key={k}>
-              <div className="text-xs font-medium uppercase tracking-wide text-gray-500">{k}</div>
+              <div className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">{k}</div>
               <FieldRenderer value={v} depth={depth + 1} />
             </div>
           ))}
@@ -80,7 +80,7 @@ export function FieldRenderer({ value, depth = 0 }: FieldRendererProps) {
       <div className="ml-3">
         {entries.map(([k, v]) => (
           <div key={k} className="mb-2">
-            <div className="text-xs font-medium uppercase tracking-wide text-gray-500">{k}</div>
+            <div className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">{k}</div>
             <FieldRenderer value={v} depth={depth + 1} />
           </div>
         ))}

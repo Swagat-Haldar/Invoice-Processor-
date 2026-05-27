@@ -37,8 +37,8 @@ function Section({
 }) {
   if (hidden) return null;
   return (
-    <section className="rounded-lg border border-gray-200 bg-white">
-      <div className="border-b border-gray-200 px-4 py-2 text-sm font-semibold text-gray-900">
+    <section className="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+      <div className="border-b border-gray-200 px-4 py-2 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
         {title}
       </div>
       <div className="px-4 py-3">{children}</div>
@@ -69,13 +69,13 @@ export default function InvoiceView({ invoice }: InvoiceViewProps) {
       <Section title="Header" hidden={headerHidden}>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
-            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
               Invoice Meta
             </div>
             <FieldRenderer value={invoiceMeta} />
           </div>
           <div>
-            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
               Parties
             </div>
             <FieldRenderer value={{ seller, buyer }} />
@@ -88,7 +88,7 @@ export default function InvoiceView({ invoice }: InvoiceViewProps) {
           {showLineItems ? <LineItemsTable lineItems={lineItems} /> : null}
           {isRenderable(totals) ? (
             <div>
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                 Totals
               </div>
               <FieldRenderer value={totals} />
@@ -101,7 +101,7 @@ export default function InvoiceView({ invoice }: InvoiceViewProps) {
         <div className="space-y-4">
           {isRenderable(payment) ? (
             <div>
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                 Payment
               </div>
               <FieldRenderer value={payment} />
@@ -110,16 +110,16 @@ export default function InvoiceView({ invoice }: InvoiceViewProps) {
 
           {isRenderable(notes) ? (
             <div>
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                 Notes
               </div>
-              <div className="text-sm text-gray-900 whitespace-pre-wrap">{String(notes)}</div>
+              <div className="text-sm text-gray-900 whitespace-pre-wrap dark:text-gray-100">{String(notes)}</div>
             </div>
           ) : null}
 
           {isRenderable(other) ? (
             <div>
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                 Other
               </div>
               <FieldRenderer value={other} />
